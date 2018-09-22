@@ -17,25 +17,15 @@ app.get('/scrape', (req, res) => {
       const listResult = []
 
       $('.result_unit_con').each((i, elem) => {
-        console.log($(elem).find('.llogo > a > img').attr('src'))
         listResult.push({
           nameJob: $(elem).find('.posting_name').text(),
           companyName: $(elem).find('.btn_open').text(),
-          logo: $(elem).find('.llogo > a > img').attr('src')
+          logo: $(elem).find('.llogo > a > img').attr('src'),
+          jobLocation: $(elem).find('.tags').eq(0).text(),
+          jobFunction: $(elem).find('.tags').eq(1).text(),
+          jobIndustry: $(elem).find('.tags').eq(2).text()
         })
       })
-
-      // const listLocation = {}
-      // $('.result_labels').each((i, elem) => {
-      //   listLocation[i] = $(elem).children('.tags').first().text()
-      // })
-
-      // const sumList = {
-      //   name: listName,
-      //   company: listCompanyName,
-      //   logo: listLogo,
-      //   location: listLocation
-      // }
 
       res.send({
         data: listResult
