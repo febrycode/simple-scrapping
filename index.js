@@ -24,9 +24,21 @@ app.get('/scrape', (req, res) => {
         listCompanyName[i] = $(elem).text()
       })
 
+      const listLogo = {}
+      $('.llogo>a').children().each((i, elem) => {
+        listLogo[i] = $(elem).attr('src')
+      })
+
+      const listLocation = {}
+      $('.result_labels').each((i, elem) => {
+        listLocation[i] = $(elem).children('.tags').first().text()
+      })
+
       const sumList = {
         name: listName,
-        company: listCompanyName
+        company: listCompanyName,
+        logo: listLogo,
+        location: listLocation
       }
 
       res.send({
