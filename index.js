@@ -14,35 +14,31 @@ const app = express()
 app.get('/scrape', (req, res) => {
   rp(options)
     .then(($) => {
-      const listName = {}
-      $('.posting_name').each((i, elem) => {
-        listName[i] = $(elem).text()
+      const listResult = []
+
+      $('.result_unit_con').each((i, elem) => {
+        console.log($(elem).find('.llogo > a > img').attr('src'))
+        listResult.push({
+          nameJob: $(elem).find('.posting_name').text(),
+          companyName: $(elem).find('.btn_open').text(),
+          logo: $(elem).find('.llogo > a > img').attr('src')
+        })
       })
 
-      const listCompanyName = {}
-      $('.btn_open').each((i, elem) => {
-        listCompanyName[i] = $(elem).text()
-      })
+      // const listLocation = {}
+      // $('.result_labels').each((i, elem) => {
+      //   listLocation[i] = $(elem).children('.tags').first().text()
+      // })
 
-      const listLogo = {}
-      $('.llogo>a').children().each((i, elem) => {
-        listLogo[i] = $(elem).attr('src')
-      })
-
-      const listLocation = {}
-      $('.result_labels').each((i, elem) => {
-        listLocation[i] = $(elem).children('.tags').first().text()
-      })
-
-      const sumList = {
-        name: listName,
-        company: listCompanyName,
-        logo: listLogo,
-        location: listLocation
-      }
+      // const sumList = {
+      //   name: listName,
+      //   company: listCompanyName,
+      //   logo: listLogo,
+      //   location: listLocation
+      // }
 
       res.send({
-        data: sumList
+        data: listResult
       })
     })
     .catch((err) => {
