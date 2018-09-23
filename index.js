@@ -3,7 +3,7 @@ const rp = require('request-promise')
 const cheerio = require('cheerio')
 
 const options = {
-  uri: "https://id.jobplanet.com/search?category=&query=&_rs_con=welcome&_rs_act=index&_rs_element=main_search_bar",
+  uri: 'https://id.jobplanet.com/search?category=&query=&_rs_con=welcome&_rs_act=index&_rs_element=main_search_bar',
   transform: function (body) {
     return cheerio.load(body)
   }
@@ -32,9 +32,8 @@ app.get('/scrape', (req, res) => {
       })
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err)
     })
-
 })
 
 app.listen('8081', () => { 'Express server listening port 8081' })
