@@ -10,7 +10,8 @@ const options = {
 }
 
 function getAll (req, res) {
-  Job.find({}, 'jobName companyName jobLocation')
+  const jobName = req.query.q
+  Job.find({ jobName: { $regex: '.*' + jobName + '.*' } }, 'jobName companyName jobLocation').limit(10)
     .then(
       jobs => {
         res.send({
