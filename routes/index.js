@@ -8,6 +8,7 @@ function init (server) {
 
   server.get('/scrapes', jobService.scrapeJob)
   server.get('/jobs', jobService.getAll)
+  server.get('/jobs/:id', jobService.getById)
   server.post('/jobs', jobService.createJob)
   server.put('/jobs/:id', jobService.updateJob)
   server.delete('/jobs/:id', jobService.deleteJob)

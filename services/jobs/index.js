@@ -30,6 +30,27 @@ function getAll (req, res) {
     )
 }
 
+function getById (req, res) {
+  const id = req.params.id
+  Job.findById(id)
+    .then(
+      job => {
+        res.send({
+          error: false,
+          job: job
+        })
+      }
+    )
+    .catch(
+      err => {
+        res.send({
+          error: true,
+          message: err
+        })
+      }
+    )
+}
+
 function createJob (req, res) {
   const jobName = req.body.jobName
   const companyName = req.body.companyName
@@ -167,6 +188,7 @@ function deleteJob (req, res) {
 
 module.exports = {
   getAll,
+  getById,
   createJob,
   scrapeJob,
   updateJob,
