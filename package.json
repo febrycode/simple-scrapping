@@ -9,6 +9,7 @@
   "author": "Febryan Setiawan",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.3",
     "mongoose": "^5.2.17",
