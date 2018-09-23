@@ -3,6 +3,8 @@ const mongoUrl = require('../global')
 
 mongoose.Promise = global.Promise
 
+mongoose.set('useFindAndModify', false)
+
 mongoose.connect(mongoUrl.url, { useNewUrlParser: true })
   .then(
     () => {
