@@ -35,7 +35,7 @@ app.get('/scrapes', (req, res) => {
           () => {
             res.send({
               error: false,
-              message: 'Data has been created succesfully'
+              message: 'Data has been scrapped and created succesfully'
             })
           }
         )
@@ -64,6 +64,40 @@ app.get('/jobs', (req, res) => {
         res.send({
           error: false,
           jobs: jobs
+        })
+      }
+    )
+    .catch(
+      err => {
+        res.send({
+          error: true,
+          message: err
+        })
+      }
+    )
+})
+
+app.post('/jobs', (req, res) => {
+  const jobName = req.body.jobName
+  const companyName = req.body.companyName
+  const companyLogo = req.body.companyLogo
+  const jobLocation = req.body.jobLocation
+  const jobFunction = req.body.jobFunction
+  const jobIndustry = req.body.jobIndustry
+
+  Job.create({
+    jobName: jobName,
+    companyName: companyName,
+    companyLogo: companyLogo,
+    jobLocation: jobLocation,
+    jobFunction: jobFunction,
+    jobIndustry: jobIndustry
+  })
+    .then(
+      () => {
+        res.send({
+          error: false,
+          message: 'Data has been created successully'
         })
       }
     )
