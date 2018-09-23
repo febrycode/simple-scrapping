@@ -4,7 +4,7 @@
   "description": "App for simple scrapping a website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test --recursive --exit"
   },
   "author": "Febryan Setiawan",
   "license": "ISC",
@@ -21,5 +21,10 @@
     "chai-http": "^4.2.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4"
+  },
+  "standard": {
+    "ignore": [
+      "test/*"
+    ]
   }
 }
