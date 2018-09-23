@@ -1,6 +1,6 @@
 const rp = require('request-promise')
 const cheerio = require('cheerio')
-const Job = require('../../model/Job')
+const Job = require('../../models/Job')
 
 const options = {
   uri: 'https://id.jobplanet.com/search?category=&query=&_rs_con=welcome&_rs_act=index&_rs_element=main_search_bar',

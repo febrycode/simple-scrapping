@@ -1,4 +1,4 @@
-const jobService = require('../services/jobs')
+const jobService = require('../controllers/jobs')
 
 function init (server) {
   server.get('*', function (req, res, next) {
