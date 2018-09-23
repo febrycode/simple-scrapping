@@ -10,7 +10,7 @@ const options = {
 }
 
 function getAll (req, res) {
-  Job.find()
+  Job.find({}, 'jobName companyName jobLocation')
     .then(
       jobs => {
         res.send({

@@ -10,7 +10,8 @@ const nameSchema = new mongoose.Schema(
     jobIndustry: String
   }, {
     timestamps: true
-  })
+  }
+)
 
 const Job = mongoose.model('Job', nameSchema)
 
